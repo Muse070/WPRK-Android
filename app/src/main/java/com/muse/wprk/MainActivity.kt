@@ -1,9 +1,11 @@
 package com.muse.wprk
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.getValue
@@ -23,6 +25,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.muse.wprk.core.NavigationRoutes.*
 import com.muse.wprk.main.PodcastHome
+import com.muse.wprk.presentation.archive.Archive
 import com.muse.wprk.presentation.components.PlayerView
 import com.muse.wprk.presentation.podcasts.PodcastDetail
 import com.muse.wprk.presentation.podcasts.PodcastViewModel
@@ -34,6 +37,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -57,6 +61,9 @@ class MainActivity : ComponentActivity() {
                                 isPlaying = true
                             }
                         }
+                    }
+                    composable(Archive.route) {
+                        Archive(gradient = backgroundColor)
                     }
                     composable(Podcasts.route) {
                         val context = context.current

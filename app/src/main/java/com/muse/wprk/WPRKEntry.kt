@@ -52,6 +52,7 @@ fun WPRKEntry(
     val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
     val bottomTabs = listOf(
         NavigationRoutes.Live,
+        NavigationRoutes.Archive,
         NavigationRoutes.Podcasts,
         NavigationRoutes.Account
     )

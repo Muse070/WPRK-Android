@@ -1,7 +1,9 @@
 package com.muse.wprk.core
 
+import android.app.ProgressDialog.show
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Archive
 import androidx.compose.material.icons.filled.BookOnline
 import androidx.compose.material.icons.filled.LiveTv
 import androidx.compose.material.icons.filled.PersonAdd
@@ -15,6 +17,7 @@ sealed class NavigationRoutes(
     val tabName: String? = null
 ) {
     object Live : NavigationRoutes(route ="live", resourceId = R.string.live, icon = Icons.Default.LiveTv, tabName = "Home")
+    object Archive : NavigationRoutes(route ="archive", resourceId = R.string.archive, icon = Icons.Default.Archive, tabName = "Archive")
     object Podcasts : NavigationRoutes(route ="podcasts", resourceId = R.string.podcasts, icon = Icons.Default.BookOnline, tabName = "Podcasts")
     object PodcastDetail : NavigationRoutes(route ="podcastDetail/{showID}/{imageURL}/{title}/{subTitle}",resourceId = R.string.podcasts, icon = Icons.Default.BookOnline, "Podcasts")
     object Account : NavigationRoutes(route ="account", resourceId = R.string.account, icon = Icons.Default.PersonAdd, tabName = "Account")
